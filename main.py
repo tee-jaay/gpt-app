@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 api_key = os.environ.get('SECRET_KEY')
+server_port = int(os.environ.get('GRADIO_SERVER_PORT'))
 
 openai.api_key = api_key
 
@@ -24,4 +25,4 @@ def CustomChatGPT(user_input):
 
 demo = gradio.Interface(fn=CustomChatGPT, inputs="text", outputs="text", title="Software Developer")
 
-demo.launch(share=True)
+demo.launch(share=True, server_port=server_port)
